@@ -12,14 +12,13 @@ const connectDB = async()=>{
             throw new Error("MongoDB URL not set in environment variables");
         }
         await mongoose.connect(mongodb_url, {
-            
+
         });
         console.log("MongoDB Connected...");
     }
-            catch(error){
-                console.log(error.message);
-                res.status(500).json({message:"MongoDB connection Error"})
-            }
+            catch (error) {
+        console.error("MongoDB connection error:", error.message);
+    }
 }
 
 export default connectDB
